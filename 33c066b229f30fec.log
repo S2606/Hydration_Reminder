@@ -1,0 +1,574 @@
+
+  ██████╗ ██╗████████╗██████╗ ██╗███████╗███████╗
+  ██╔══██╗██║╚══██╔══╝██╔══██╗██║██╔════╝██╔════╝
+  ██████╔╝██║   ██║   ██████╔╝██║███████╗█████╗
+  ██╔══██╗██║   ██║   ██╔══██╗██║╚════██║██╔══╝
+  ██████╔╝██║   ██║   ██║  ██║██║███████║███████╗
+  ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+[32;1mVersion: 1.5.5[0m
+
+[34mINFO[0m[11:48:45] [33;1mbitrise runs in CI mode[0m           
+[34mINFO[0m[11:48:45] [32;1mRunning workflow:[0m primary         
+
+[34;1mSwitching to workflow:[0m primary
+
++------------------------------------------------------------------------------+
+| (0) activate-ssh-key@3.1.1                                                   |
++------------------------------------------------------------------------------+
+| id: activate-ssh-key                                                         |
+| version: 3.1.1                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2017-04-07T11:48:49Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34mINFO[0m[11:48:49] Start installing (expect) with apt-get       
+[34mINFO[0m[11:48:49]  * [32;1m[OK][0m Step dependency (expect) installed, available. 
+[34mINFO[0m[11:48:49] Start installing (git) with apt-get          
+[34mINFO[0m[11:48:49]  * [32;1m[OK][0m Step dependency (git) installed, available. 
+
+# Configuration
+
+* Path to save the RSA SSH private key: */root/.ssh/bitrise_step_activate_ssh_key*
+* Should remove other identities from the ssh-agent? *true*
+-> $ mkdir -p /root/.ssh
+-> $ chmod 0600 /root/.ssh/bitrise_step_activate_ssh_key
+Could not open a connection to your authentication agent.
+ (i) ssh_agent_check_result: 2
+ (i) ssh-agent not started
+ (i) starting a new ssh-agent and exporting connection information with envman
+Agent pid 308
+ (i) Expose SSH_AUTH_SOCK for the new ssh-agent, with envman
+spawn ssh-add /root/.ssh/bitrise_step_activate_ssh_key
+Identity added: /root/.ssh/bitrise_step_activate_ssh_key (/root/.ssh/bitrise_step_activate_ssh_key)
+
+# Success
+
+The SSH key was saved to */root/.ssh/bitrise_step_activate_ssh_key*
+and was successfully added to ssh-agent.
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mactivate-ssh-key@3.1.1[0m                                        | 2.74 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (1) git-clone@3.4.2                                                          |
++------------------------------------------------------------------------------+
+| id: git-clone                                                                |
+| version: 3.4.2                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2017-04-07T11:48:51Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34mINFO[0m[11:48:51] Start installing (golang) with apt-get       
+[34mINFO[0m[11:48:51]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+
+[34;1mGit Clone Configs:[0m
+- CloneIntoDir: /bitrise/src
+- RepositoryURL: git@github.com:Shaggy2606/Hydration_Reminder.git
+[34;1mGit Checkout Configs:[0m
+- Commit: 
+- Tag: 
+- Branch: master
+- CloneDepth: 
+[34;1mGit Pull Request Configs:[0m
+- PullRequestURI: 
+- PullRequestID: 
+- BranchDest: 
+- PullRequestMergeBranch: 
+- ResetRepository: No
+[34;1mBitrise Build Configs:[0m
+- BuildURL: https://www.bitrise.io/build/33c066b229f30fec
+- BuildAPIToken: 6stuBZpU2gCt0OstJx7hMw
+
+[34;1mGit clone repository[0m
+=> git "init"
+=> git "remote" "add" "origin" "git@github.com:Shaggy2606/Hydration_Reminder.git"
+=> git "fetch"
+=> git "checkout" "master"
+=> git "submodule" "update" "--init" "--recursive"
+[34;1mExporting git logs[0m
+=> GIT_CLONE_COMMIT_HASH
+   value: 56e213ac6e088482946beeb877ea0c0d59efa072
+
+=> GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+   value: Update README.md
+
+=> GIT_CLONE_COMMIT_MESSAGE_BODY
+   value: 
+
+=> GIT_CLONE_COMMIT_AUTHOR_NAME
+   value: Shagun Khemka
+
+=> GIT_CLONE_COMMIT_AUTHOR_EMAIL
+   value: shagun.khemka60@gmail.com
+
+=> GIT_CLONE_COMMIT_COMMITER_NAME
+   value: GitHub
+
+=> GIT_CLONE_COMMIT_COMMITER_EMAIL
+   value: noreply@github.com
+
+[32;1mSuccess[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@3.4.2[0m                                               | 6.24 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (2) Do anything with Script step                                             |
++------------------------------------------------------------------------------+
+| id: script                                                                   |
+| version: 1.1.3                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2017-04-07T11:48:57Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
++ echo 'Hello World!'
+Hello World!
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mDo anything with Script step[0m                                  | 1.31 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (3) install-missing-android-tools@0.9.2                                      |
++------------------------------------------------------------------------------+
+| id: install-missing-android-tools                                            |
+| version: 0.9.2                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2017-04-07T11:48:59Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34mINFO[0m[11:48:59] Start installing (golang) with apt-get       
+[34mINFO[0m[11:48:59]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+
+[34;1mConfigs:[0m
+- RootBuildGradleFile: build.gradle
+- UpdateSupportLibraryAndPlayServices: true
+- AndroidHome: /opt/android-sdk-linux
+
+[34;1mSearch for root setting.gradle file[0m
+root build.gradle file: /bitrise/src/build.gradle
+root settings.gradle file:: /bitrise/src/settings.gradle
+
+[34;1mCollect build.gradle files to analyze[0m
+active modules to analyze: [app]
+build.gradle files to analyze: [/bitrise/src/app/build.gradle]
+
+[34;1mCollect dependencies to ensure[0m
+Analyze build.gradle file: /bitrise/src/app/build.gradle
+
+[34;1mEnsure dependencies[0m
+Checking compileSdkVersion: 25.0.0
+[32;1mcompileSdkVersion: 25.0.0 installed[0m
+Checking buildToolsVersion: 25.0.1
+buildToolsVersion: 25.0.1 not installed
+$ android "update" "sdk" "--no-ui" "--all" "--filter" "build-tools-25.0.1"
+[32;1mbuildToolsVersion: 25.0.1 installed[0m
+Updating Support Library
+$ android "update" "sdk" "--no-ui" "--all" "--filter" "extra-android-m2repository"
+$ android "update" "sdk" "--no-ui" "--all" "--filter" "extra-google-m2repository"
+[32;1mSupport Library updated[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1minstall-missing-android-tools@0.9.2[0m                           | 79 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 0.9.2 -> 1.0.1                                             |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (4) gradle-runner@1.5.4                                                      |
++------------------------------------------------------------------------------+
+| id: gradle-runner                                                            |
+| version: 1.5.4                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2017-04-07T11:50:18Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34mINFO[0m[11:50:18] Start installing (golang) with apt-get       
+[34mINFO[0m[11:50:18]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+
+[34;1mConfigs:[0m
+  - GradlewPath: ./gradlew
+  - GradleFile: build.gradle
+  - GradleTasks: assemble
+  - GradleOptions: --stacktrace
+  - ApkFileIncludeFilter: *.apk
+  - ApkFileExcludeFilter: *-unaligned.apk
+  - MappingFileIncludeFilter: */mapping.txt
+  - MappingFileExcludeFilter: 
+  - DeployDir: /bitrise/deploy
+
+[34;1mRunning gradle task...[0m
+  ./gradlew "--build-file" "build.gradle" "assemble" "--stacktrace"
+
+Downloading https://services.gradle.org/distributions/gradle-3.3-all.zip
+.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Unzipping /root/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3-all.zip to /root/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9
+Set executable permissions for: /root/.gradle/wrapper/dists/gradle-3.3-all/55gk2rcmfc6p2dg9u9ohc3hw9/gradle-3.3/bin/gradle
+Starting a Gradle Daemon (subsequent builds will be faster)
+Download https://jcenter.bintray.com/com/android/tools/build/gradle/2.3.0/gradle-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/gradle-core/2.3.0/gradle-core-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/builder/2.3.0/builder-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/lint/lint/25.3.0/lint-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.pom
+Download https://jcenter.bintray.com/com/android/tools/build/gradle-api/2.3.0/gradle-api-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/databinding/compilerCommon/2.3.0/compilerCommon-2.3.0.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm/5.0.4/asm-5.0.4.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-parent/5.0.4/asm-parent-5.0.4.pom
+Download https://jcenter.bintray.com/org/ow2/ow2/1.3/ow2-1.3.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-commons/5.0.4/asm-commons-5.0.4.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-gradle/5.3.2/proguard-gradle-5.3.2.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-parent/5.3.2/proguard-parent-5.3.2.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.core/0.7.5.201505241946/org.jacoco.core-0.7.5.201505241946.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.build/0.7.5.201505241946/org.jacoco.build-0.7.5.201505241946.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.report/0.7.5.201505241946/org.jacoco.report-0.7.5.201505241946.pom
+Download https://jcenter.bintray.com/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.pom
+Download https://jcenter.bintray.com/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+Download https://jcenter.bintray.com/com/google/protobuf/protobuf-java/3.0.0/protobuf-java-3.0.0.pom
+Download https://jcenter.bintray.com/com/google/protobuf/protobuf-parent/3.0.0/protobuf-parent-3.0.0.pom
+Download https://jcenter.bintray.com/com/google/google/1/google-1.pom
+Download https://jcenter.bintray.com/org/antlr/antlr/3.5.2/antlr-3.5.2.pom
+Download https://jcenter.bintray.com/org/antlr/antlr-master/3.5.2/antlr-master-3.5.2.pom
+Download https://jcenter.bintray.com/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+Download https://jcenter.bintray.com/com/android/tools/build/builder-model/2.3.0/builder-model-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/builder-test-api/2.3.0/builder-test-api-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/sdklib/25.3.0/sdklib-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/sdk-common/25.3.0/sdk-common-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/common/25.3.0/common-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/manifest-merger/25.3.0/manifest-merger-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/ddms/ddmlib/25.3.0/ddmlib-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/jack/jack-api/0.13.0/jack-api-0.13.0.pom
+Download https://jcenter.bintray.com/com/android/tools/jill/jill-api/0.10.0/jill-api-0.10.0.pom
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/protos/25.3.0/protos-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/shared/25.3.0/shared-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/tracker/25.3.0/tracker-25.3.0.pom
+Download https://jcenter.bintray.com/com/squareup/javawriter/2.5.0/javawriter-2.5.0.pom
+Download https://jcenter.bintray.com/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.pom
+Download https://jcenter.bintray.com/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-tree/5.0.4/asm-tree-5.0.4.pom
+Download https://jcenter.bintray.com/com/android/tools/lint/lint-checks/25.3.0/lint-checks-25.3.0.pom
+Download https://jcenter.bintray.com/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.pom
+Download https://jcenter.bintray.com/com/google/guava/guava/18.0/guava-18.0.pom
+Download https://jcenter.bintray.com/com/google/guava/guava-parent/18.0/guava-parent-18.0.pom
+Download https://jcenter.bintray.com/com/android/databinding/baseLibrary/2.3.0/baseLibrary-2.3.0.pom
+Download https://jcenter.bintray.com/org/antlr/antlr4/4.5.3/antlr4-4.5.3.pom
+Download https://jcenter.bintray.com/org/antlr/antlr4-master/4.5.3/antlr4-master-4.5.3.pom
+Download https://jcenter.bintray.com/commons-io/commons-io/2.4/commons-io-2.4.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/25/commons-parent-25.pom
+Download https://jcenter.bintray.com/org/apache/apache/9/apache-9.pom
+Download https://jcenter.bintray.com/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.pom
+Download https://jcenter.bintray.com/com/android/tools/annotations/24.5.0/annotations-24.5.0.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-base/5.3.2/proguard-base-5.3.2.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-parent/5.0.1/asm-parent-5.0.1.pom
+Download https://jcenter.bintray.com/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom
+Download https://jcenter.bintray.com/org/antlr/ST4/4.0.8/ST4-4.0.8.pom
+Download https://jcenter.bintray.com/com/android/tools/layoutlib/layoutlib-api/25.3.0/layoutlib-api-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/dvlib/25.3.0/dvlib-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/repository/25.3.0/repository-25.3.0.pom
+Download https://jcenter.bintray.com/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/33/commons-parent-33.pom
+Download https://jcenter.bintray.com/org/apache/apache/13/apache-13.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-client/4.1.1/httpcomponents-client-4.1.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/project/4.1.1/project-4.1.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-client/4.1/httpcomponents-client-4.1.pom
+Download https://jcenter.bintray.com/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/lint/lint-api/25.3.0/lint-api-25.3.0.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-analysis/5.0.4/asm-analysis-5.0.4.pom
+Download https://jcenter.bintray.com/com/intellij/annotations/12.0/annotations-12.0.pom
+Download https://jcenter.bintray.com/com/google/jimfs/jimfs/1.1/jimfs-1.1.pom
+Download https://jcenter.bintray.com/com/google/jimfs/jimfs-parent/1.1/jimfs-parent-1.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-core/4.1/httpcomponents-core-4.1.pom
+Download https://jcenter.bintray.com/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/5/commons-parent-5.pom
+Download https://jcenter.bintray.com/org/apache/apache/4/apache-4.pom
+Download https://jcenter.bintray.com/commons-codec/commons-codec/1.4/commons-codec-1.4.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/11/commons-parent-11.pom
+Download https://jcenter.bintray.com/com/android/tools/external/com-intellij/uast/162.2228.14/uast-162.2228.14.pom
+Download https://jcenter.bintray.com/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.pom
+Download https://jcenter.bintray.com/com/android/tools/annotations/25.3.0/annotations-25.3.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/gradle/2.3.0/gradle-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/build/gradle-core/2.3.0/gradle-core-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/build/builder/2.3.0/builder-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/lint/lint/25.3.0/lint-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.jar
+Download https://jcenter.bintray.com/com/android/tools/build/gradle-api/2.3.0/gradle-api-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/databinding/compilerCommon/2.3.0/compilerCommon-2.3.0.jar
+Download https://jcenter.bintray.com/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar
+Download https://jcenter.bintray.com/org/ow2/asm/asm-commons/5.0.4/asm-commons-5.0.4.jar
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-gradle/5.3.2/proguard-gradle-5.3.2.jar
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.core/0.7.5.201505241946/org.jacoco.core-0.7.5.201505241946.jar
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.report/0.7.5.201505241946/org.jacoco.report-0.7.5.201505241946.jar
+Download https://jcenter.bintray.com/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.jar
+Download https://jcenter.bintray.com/com/google/protobuf/protobuf-java/3.0.0/protobuf-java-3.0.0.jar
+Download https://jcenter.bintray.com/org/antlr/antlr/3.5.2/antlr-3.5.2.jar
+Download https://jcenter.bintray.com/com/android/tools/build/builder-model/2.3.0/builder-model-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/build/builder-test-api/2.3.0/builder-test-api-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/sdklib/25.3.0/sdklib-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/sdk-common/25.3.0/sdk-common-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/common/25.3.0/common-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/build/manifest-merger/25.3.0/manifest-merger-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/ddms/ddmlib/25.3.0/ddmlib-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/jack/jack-api/0.13.0/jack-api-0.13.0.jar
+Download https://jcenter.bintray.com/com/android/tools/jill/jill-api/0.10.0/jill-api-0.10.0.jar
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/protos/25.3.0/protos-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/shared/25.3.0/shared-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/analytics-library/tracker/25.3.0/tracker-25.3.0.jar
+Download https://jcenter.bintray.com/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar
+Download https://jcenter.bintray.com/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar
+Download https://jcenter.bintray.com/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar
+Download https://jcenter.bintray.com/org/ow2/asm/asm-tree/5.0.4/asm-tree-5.0.4.jar
+Download https://jcenter.bintray.com/com/android/tools/lint/lint-checks/25.3.0/lint-checks-25.3.0.jar
+Download https://jcenter.bintray.com/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.jar
+Download https://jcenter.bintray.com/com/google/guava/guava/18.0/guava-18.0.jar
+Download https://jcenter.bintray.com/com/android/databinding/baseLibrary/2.3.0/baseLibrary-2.3.0.jar
+Download https://jcenter.bintray.com/org/antlr/antlr4/4.5.3/antlr4-4.5.3.jar
+Download https://jcenter.bintray.com/commons-io/commons-io/2.4/commons-io-2.4.jar
+Download https://jcenter.bintray.com/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-base/5.3.2/proguard-base-5.3.2.jar
+Download https://jcenter.bintray.com/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1.jar
+Download https://jcenter.bintray.com/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar
+Download https://jcenter.bintray.com/org/antlr/ST4/4.0.8/ST4-4.0.8.jar
+Download https://jcenter.bintray.com/com/android/tools/layoutlib/layoutlib-api/25.3.0/layoutlib-api-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/dvlib/25.3.0/dvlib-25.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/repository/25.3.0/repository-25.3.0.jar
+Download https://jcenter.bintray.com/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+Download https://jcenter.bintray.com/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar
+Download https://jcenter.bintray.com/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar
+Download https://jcenter.bintray.com/com/android/tools/lint/lint-api/25.3.0/lint-api-25.3.0.jar
+Download https://jcenter.bintray.com/org/ow2/asm/asm-analysis/5.0.4/asm-analysis-5.0.4.jar
+Download https://jcenter.bintray.com/com/intellij/annotations/12.0/annotations-12.0.jar
+Download https://jcenter.bintray.com/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar
+Download https://jcenter.bintray.com/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar
+Download https://jcenter.bintray.com/commons-codec/commons-codec/1.4/commons-codec-1.4.jar
+Download https://jcenter.bintray.com/com/android/tools/external/com-intellij/uast/162.2228.14/uast-162.2228.14.jar
+Download https://jcenter.bintray.com/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar
+Download https://jcenter.bintray.com/com/android/tools/annotations/25.3.0/annotations-25.3.0.jar
+Download https://jcenter.bintray.com/com/firebase/firebase-jobdispatcher/0.5.0/firebase-jobdispatcher-0.5.0.pom
+Download https://jcenter.bintray.com/com/firebase/firebase-jobdispatcher/0.5.0/firebase-jobdispatcher-0.5.0.aar
+Incremental java compilation is an incubating feature.
+:app:preBuild UP-TO-DATE
+:app:preDebugBuild UP-TO-DATE
+:app:checkDebugManifest
+:app:preReleaseBuild UP-TO-DATE
+:app:prepareComAndroidSupportAnimatedVectorDrawable2501Library
+:app:prepareComAndroidSupportAppcompatV72501Library
+:app:prepareComAndroidSupportSupportCompat2501Library
+:app:prepareComAndroidSupportSupportCoreUi2501Library
+:app:prepareComAndroidSupportSupportCoreUtils2501Library
+:app:prepareComAndroidSupportSupportFragment2501Library
+:app:prepareComAndroidSupportSupportMediaCompat2501Library
+:app:prepareComAndroidSupportSupportV42501Library
+:app:prepareComAndroidSupportSupportVectorDrawable2501Library
+:app:prepareComFirebaseFirebaseJobdispatcher050Library
+:app:prepareDebugDependencies
+:app:compileDebugAidl
+:app:compileDebugRenderscript
+:app:generateDebugBuildConfig
+:app:generateDebugResValues
+:app:generateDebugResources
+:app:mergeDebugResources
+:app:processDebugManifest
+:app:processDebugResources
+:app:generateDebugSources
+:app:incrementalDebugJavaCompilationSafeguard
+:app:javaPreCompileDebug
+:app:compileDebugJavaWithJavac
+:app:compileDebugJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+Note: /bitrise/src/app/src/main/java/com/example/android/background/sync/WaterReminderFirebaseJob.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+:app:compileDebugNdk UP-TO-DATE
+:app:compileDebugSources
+:app:mergeDebugShaders
+:app:compileDebugShaders
+:app:generateDebugAssets
+:app:mergeDebugAssets
+:app:transformClassesWithDexForDebug
+:app:mergeDebugJniLibFolders
+:app:transformNativeLibsWithMergeJniLibsForDebug
+:app:transformNativeLibsWithStripDebugSymbolForDebug
+:app:processDebugJavaRes UP-TO-DATE
+:app:transformResourcesWithMergeJavaResForDebug
+:app:validateSigningDebug
+:app:packageDebug
+:app:assembleDebug
+:app:checkReleaseManifest
+:app:prepareReleaseDependencies
+:app:compileReleaseAidl
+:app:compileReleaseRenderscript
+:app:generateReleaseBuildConfig
+:app:generateReleaseResValues
+:app:generateReleaseResources
+:app:mergeReleaseResources
+:app:processReleaseManifest
+:app:processReleaseResources
+:app:generateReleaseSources
+:app:incrementalReleaseJavaCompilationSafeguard
+:app:javaPreCompileRelease
+:app:compileReleaseJavaWithJavac
+:app:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+Note: /bitrise/src/app/src/main/java/com/example/android/background/sync/WaterReminderFirebaseJob.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+:app:compileReleaseNdk UP-TO-DATE
+:app:compileReleaseSources
+:app:lintVitalRelease
+:app:mergeReleaseShaders
+:app:compileReleaseShaders
+:app:generateReleaseAssets
+:app:mergeReleaseAssets
+:app:transformClassesWithDexForRelease
+:app:mergeReleaseJniLibFolders
+:app:transformNativeLibsWithMergeJniLibsForRelease
+:app:transformNativeLibsWithStripDebugSymbolForRelease
+:app:processReleaseJavaRes UP-TO-DATE
+:app:transformResourcesWithMergeJavaResForRelease
+:app:packageRelease
+:app:assembleRelease
+:app:assemble
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 40.435 secs
+
+[34;1mMove apk files...[0m
+  find "." "-path" "*.apk" "!" "-path" "*-unaligned.apk"
+  copy ./app/build/outputs/apk/app-debug.apk to /bitrise/deploy/app-debug.apk
+  copy ./app/build/outputs/apk/app-release-unsigned.apk to /bitrise/deploy/app-release-unsigned.apk
+  [32;1mThe apk path is now available in the Environment Variable: $BITRISE_APK_PATH (value: /bitrise/deploy/app-release-unsigned.apk)[0m
+
+[34;1mMove mapping files...[0m
+  find "." "-path" "*/mapping.txt" "!" "-path" ""
+  No mapping file matched the filters
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgradle-runner@1.5.4[0m                                           | 105 sec  |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (5) deploy-to-bitrise-io@1.2.9                                               |
++------------------------------------------------------------------------------+
+| id: deploy-to-bitrise-io                                                     |
+| version: 1.2.9                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2017-04-07T11:52:04Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+
+=> Preparing step ...
+
+Don't run Bundler as root. Bundler can ask for sudo if it is needed, and
+installing your bundle as root will break this application for all non-root
+users on this machine.
+Fetching gem metadata from https://rubygems.org/.
+Fetching version metadata from https://rubygems.org/.
+Using plist 3.2.0
+Using bundler 1.14.6
+Installing rubyzip 1.1.7
+Installing ipa_analyzer 0.1.0
+Bundle complete! 3 Gemfile dependencies, 4 gems now installed.
+Gems in the group test were not installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+=> Running the step ...
+
+
+========== Configs ==========
+ * Build URL: https://www.bitrise.io/build/33c066b229f30fec
+ * Build's API Token: 6stuBZpU2gCt0OstJx7hMw
+ * is_compress: false
+ * deploy_path: /bitrise/deploy
+ * notify_user_groups: everyone
+ * notify_email_list: 
+ * is_enable_public_page: true
+
+## Uploading the content of the Deploy directory separately
+
+======= List of files =======
+ * /bitrise/deploy/app-debug.apk
+ * /bitrise/deploy/app-release-unsigned.apk
+=============================
+
+
+
+# Deploying apk file: /bitrise/deploy/app-debug.apk
+--> Analyze the apk
+  (i) apk_info_hsh: {:file_size_bytes=>1507090, :app_info=>{:app_name=>"Hydration Reminder", :package_name=>"com.example.android.background", :version_code=>"1", :version_name=>"1.0", :min_sdk_version=>"10"}}
+--> Create a Build Artifact on Bitrise
+ (i) File Size: 1.44 MB
+--> Upload the apk
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 1471k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 1471k    0     0  100 1471k      0  1730k --:--:-- --:--:-- --:--:-- 1729k
+--> Finish the Artifact creation
+
+
+# Deploying apk file: /bitrise/deploy/app-release-unsigned.apk
+--> Analyze the apk
+  (i) apk_info_hsh: {:file_size_bytes=>1398708, :app_info=>{:app_name=>"Hydration Reminder", :package_name=>"com.example.android.background", :version_code=>"1", :version_name=>"1.0", :min_sdk_version=>"10"}}
+--> Create a Build Artifact on Bitrise
+ (i) File Size: 1.33 MB
+--> Upload the apk
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 1365k    0     0  100 1365k      0  2054k --:--:-- --:--:-- --:--:-- 2054k
+--> Finish the Artifact creation
+
+## Success
+(i) You can find the Artifact on Bitrise, on the [Build's page](https://www.bitrise.io/build/33c066b229f30fec)
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1.2.9[0m                                    | 9.84 sec |
++---+---------------------------------------------------------------+----------+
+
+
++------------------------------------------------------------------------------+
+|                               bitrise summary                                |
++---+---------------------------------------------------------------+----------+
+|   | title                                                         | time (s) |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mactivate-ssh-key@3.1.1[0m                                        | 2.74 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@3.4.2[0m                                               | 6.24 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mDo anything with Script step[0m                                  | 1.31 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1minstall-missing-android-tools@0.9.2[0m                           | 79 sec   |
++---+---------------------------------------------------------------+----------+
+| Update available: 0.9.2 -> 1.0.1                                             |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgradle-runner@1.5.4[0m                                           | 105 sec  |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1.2.9[0m                                    | 9.84 sec |
++---+---------------------------------------------------------------+----------+
+| Total runtime: 204 sec                                                       |
++------------------------------------------------------------------------------+
+
+[34mINFO[0m[11:52:12]                                              
+[34mINFO[0m[11:52:12] Submitting anonymized usage information...   
+[34mINFO[0m[11:52:12] For more information visit:                  
+[34mINFO[0m[11:52:12] https://github.com/bitrise-core/bitrise-plugins-analytics/blob/master/README.md 
